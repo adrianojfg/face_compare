@@ -1,12 +1,13 @@
 import face_recognition
 from flask import Flask, jsonify, request, redirect
+from flask_cors import CORS
 from waitress import serve
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
-
+CORS(app)
 
 def allowed_file(filename):
     return '.' in filename and \

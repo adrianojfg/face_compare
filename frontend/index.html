@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Compare</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="form-container">
+        <h1>Face Compare</h1>
+        <p>Comparador facial que retorna o grau de similaridade entre dois rostos.</p>
+        <form id="uploadForm" action="https://gleaming-laureen-gasparini-6bf02051.koyeb.app" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file1" id="file1">
+            <input type="file" name="file2" id="file2">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div id="result" style="display: none;">
+        <p id="result-text"></p>
+        <button id="voltar">Voltar</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
