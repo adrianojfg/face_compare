@@ -2,11 +2,8 @@ services:
   face_compare:
     image: face_compare
     container_name: face_compare
-    working_dir: /face_compare
-    build:
-      context: .
+    build: .
     ports:
       - 5001:5001
     volumes:
-      - ./:/face_compare
-    command: python3 web_service.py
+      - ./:/root/face_compare

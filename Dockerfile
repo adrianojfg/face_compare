@@ -30,7 +30,8 @@ RUN cd ~ && \
     cd  dlib/ && \
     python3 setup.py install --yes USE_AVX_INSTRUCTIONS
 
-COPY . /root/face_compare
-
-RUN cd /root/face_compare && \
-    pip3 install -r requirements.txt
+WORKDIR /root/face_compare
+COPY . .
+RUN pip3 install -r requirements.txt
+EXPOSE 5001
+CMD ["python3", "web_service.py"]
