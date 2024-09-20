@@ -20,13 +20,22 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos dos campos de input */
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
+/* Estilos da área de arrastar e soltar */
+.drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.file-label {
+    display: block;
+    margin-top: 10px;
+    color: #007BFF;
+    cursor: pointer;
 }
 
 /* Estilos do botão */
@@ -45,7 +54,7 @@ button[type="submit"] {
     width: 100%;
 }
 
-/* Adicione seus estilos aqui para personalizar a aparência da div result */
+/* Estilos do resultado */
 #result {
     margin-top: 20px;
     padding: 10px;
@@ -70,4 +79,18 @@ button[type="submit"] {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.drop-area.highlight {
+    border-color: #4CAF50;
+    background-color: #e0f7e0;
+}
+
+.preview {
+    margin: 10px auto;
+    max-width: 100%;
+    max-height: 200px;
+    display: none; /* Oculta inicialmente */
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
