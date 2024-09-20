@@ -38,8 +38,8 @@ def compare_faces(file1_stream, file2_stream):
     img2 = face_recognition.load_image_file(file2_stream)
 
     # Get face encodings for any faces in the uploaded images
-    img1_face_encodings = face_recognition.face_encodings(img1)
-    img2_face_encodings = face_recognition.face_encodings(img2)
+    img1_face_encodings = face_recognition.face_encodings(img1, None, 1, 'large')
+    img2_face_encodings = face_recognition.face_encodings(img2, None, 1, 'large')
 
     if len(img1_face_encodings) > 0 and len(img2_face_encodings) > 0:
         try:
