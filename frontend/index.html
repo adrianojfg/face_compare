@@ -11,17 +11,19 @@
         <h1>Face Compare</h1>
         <p>Comparador facial que retorna o grau de similaridade entre dois rostos.</p>
         <form id="uploadForm" action="https://gleaming-laureen-gasparini-6bf02051.koyeb.app" method="POST" enctype="multipart/form-data">
-            <div id="drop-area-file1" class="drop-area">
-                <p>Arraste e solte a Imagem 1 aqui ou clique para selecionar.</p>
-                <input type="file" name="file1" id="file1" accept="image/*" style="display: none;" />
-                <label for="file1" class="file-label">Selecionar Imagem 1</label>
-                <img id="preview-file1" class="preview" alt="Prévia da Imagem 1" />
-            </div>
-            <div id="drop-area-file2" class="drop-area">
-                <p>Arraste e solte a Imagem 2 aqui ou clique para selecionar.</p>
-                <input type="file" name="file2" id="file2" accept="image/*" style="display: none;" />
-                <label for="file2" class="file-label">Selecionar Imagem 2</label>
-                <img id="preview-file2" class="preview" alt="Prévia da Imagem 2" />
+            <div class="inputs">
+                <div id="drop-area-file1" class="drop-area">
+                    <p>Arraste e solte a Imagem 1 aqui ou clique para selecionar.</p>
+                    <input type="file" name="file1" id="file1" accept="image/*" style="display: none;" />
+                    <label for="file1" class="file-label">Selecionar Imagem 1</label>
+                    <img id="preview-file1" class="preview" alt="Prévia da Imagem 1" />
+                </div>
+                <div id="drop-area-file2" class="drop-area">
+                    <p>Arraste e solte a Imagem 2 aqui ou clique para selecionar.</p>
+                    <input type="file" name="file2" id="file2" accept="image/*" style="display: none;" />
+                    <label for="file2" class="file-label">Selecionar Imagem 2</label>
+                    <img id="preview-file2" class="preview" alt="Prévia da Imagem 2" />
+                </div>
             </div>
             <button id="submitButton" type="submit">Enviar <span id="loading" style="display: none;"></span></button>
         </form>
