@@ -1,23 +1,42 @@
 /* Estilos globais */
+:root {
+    --primary-color: #007BFF;
+    --success-color: #4CAF50;
+    --success-hover-color: #45a049;
+    --active-success-color: #388e3c;
+    --background-light: #f9f9f9;
+    --background-dark: #f0f0f0;
+    --border-color: #ccc;
+    --border-radius: 5px;
+    --font-size-base: 14px;
+    --font-size-heading: 16px;
+    --font-size-large: 18px;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: var(--background-dark);
 }
 
 #form-container {
     text-align: center;
 }
 
-/* Estilos do formulário */
-form {
+/* Estilos do formulário e resultado */
+form, #result {
     max-width: 400px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Estilos de entrada de arquivo e labels */
+input[type="file"], .file-label {
+    border-radius: var(--border-radius);
 }
 
 .inputs {
@@ -27,60 +46,99 @@ form {
 
 /* Estilos da área de arrastar e soltar */
 .drop-area {
-    border: 2px dashed #ccc;
-    border-radius: 5px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
     padding: 20px;
     text-align: center;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
+    background-color: var(--background-light);
     cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .drop-area p, label {
-    font-size: 14px;
+    font-size: var(--font-size-base);
+    color: #555;
 }
 
-.file-label {
-    display: block;
-    margin-top: 10px;
-    color: #007BFF;
-    cursor: pointer;
+/* Quando o drop-area está em foco */
+.drop-area:focus-within {
+    border-color: var(--primary-color);
+    background-color: #e6f7ff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.drop-area.highlight {
+    border-color: var(--success-color);
+    background-color: #e0f7e0;
 }
 
 /* Estilos do botão */
 button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: var(--success-color);
     color: #fff;
     border: none;
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: var(--font-size-heading);
     margin-top: 10px;
     cursor: pointer;
     border-radius: 3px;
     width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--success-hover-color);
+    transform: scale(1.05);
+}
+
+button[type="submit"]:active {
+    background-color: var(--active-success-color);
 }
 
 /* Estilos do resultado */
 #result {
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-light);
     text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#result-text {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#voltar {
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#voltar:hover {
+    background-color: #0056b3;
 }
 
 /* Estilos do spinner */
 #loading {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border: 3px solid #f3f3f3;
     border-top: 3px solid #3498db;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 1.5s linear infinite;
     margin-left: 5px;
     vertical-align: top;
 }
@@ -90,16 +148,44 @@ button[type="submit"] {
     100% { transform: rotate(360deg); }
 }
 
-.drop-area.highlight {
-    border-color: #4CAF50;
-    background-color: #e0f7e0;
-}
-
+/* Estilos do preview */
 .preview {
     margin: 10px auto;
-    max-width: 100%;
-    max-height: 200px;
-    display: none; /* Oculta inicialmente */
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: 100%;  /* Garante que a imagem não ultrapasse a largura da área */
+    max-height: 300px;  /* Define uma altura máxima para o preview */
+    display: none;  /* Oculta inicialmente */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    object-fit: contain;  /* Mantém a imagem dentro da área, sem deformar */
+}
+
+/* Ajustes para dispositivos pequenos (celulares) */
+@media (max-width: 600px) {
+    #form-container {
+        padding: 10px;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    .inputs {
+        flex-direction: column;
+    }
+
+    .drop-area {
+        margin-bottom: 15px;
+    }
+
+    .file-label {
+        font-size: 12px;
+    }
+
+    #result {
+        width: 90%;
+    }
+
+    #submitButton {
+        width: 100%;
+    }
 }
